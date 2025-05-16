@@ -7,6 +7,7 @@
     inherit system;
     specialArgs = {inherit inputs;};
     modules = [
+      inputs.home-manager.darwinModules.home-manager
       ../modules/shared
       ../modules/darwin
       ../modules/profiles/personal
