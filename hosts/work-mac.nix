@@ -5,7 +5,7 @@
 }: {
   darwinConfig = inputs.nix-darwin.lib.darwinSystem {
     inherit system;
-    specialArgs = { inherit inputs; };
+    specialArgs = {inherit inputs;};
     modules = [
       ../modules/shared
       ../modules/darwin

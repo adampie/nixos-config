@@ -1,5 +1,12 @@
 {...}: {
-  homebrew.casks = [];
+  homebrew.casks = [
+    "daisydisk"
+    "little-snitch"
+    "lm-studio"
+    "micro-snitch"
+  ];
 
-  homebrew.masApps = {};
+  homebrew.masApps = {
+    "Flighty" = 1358823008;
+  };
 }
