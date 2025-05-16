@@ -23,120 +23,48 @@
     home-manager,
     nixpkgs-unstable,
   }: let
-    system = "aarch64-darwin";
-
-    pkgs = import nixpkgs {
-      inherit system;
-      config.allowUnfree = true;
+    systems = {
+      darwin = "aarch64-darwin";
+      linux = "x86_64-linux";
     };
 
-    unstable-pkgs = import nixpkgs-unstable {
-      inherit system;
-      config.allowUnfree = true;
-    };
-
-    configuration = {pkgs, ...}: {
-      nixpkgs.config.allowUnfree = true;
-      nixpkgs.overlays = [
+    mkPkgs = system: {
+      config = {
+        allowUnfree = true;
+      };
+      overlays = [
         (final: prev: {
-          unstable = unstable-pkgs;
+          unstable = import nixpkgs-unstable {
+            inherit system;
+            config.allowUnfree = true;
+          };
         })
       ];
+    };
 
-      environment.systemPackages = with pkgs; [
-        alejandra
-        cosign
-        curl
-        dive
-        ghorg
-        git
-        gnupg
-        neofetch
-        ripgrep
-        starship
-        tldr
-        vim
-        watch
-
-        unstable.claude-code
-        unstable.mise
-      ];
-
-      homebrew = {
-        enable = true;
-        taps = [];
-        brews = [];
-        casks = [
-          "1password"
-          "1password-cli"
-          "beyond-compare"
-          "cleanshot"
-          "cursor"
-          "daisydisk"
-          "datagrip"
-          "ghostty"
-          "goland"
-          "intellij-idea"
-          "little-snitch"
-          "lm-studio"
-          "micro-snitch"
-          "orbstack"
-          "proxyman"
-          "pycharm"
-          "slack"
-          "superwhisper"
-          "tower"
-        ];
-
-        masApps = {
-          "1Password for Safari" = 1569813296;
-          "Flighty" = 1358823008;
-          "Kagi for Safari" = 1622835804;
-          "Wipr 2" = 1662217862;
-        };
+    mkDarwinConfig = {
+      hostName,
+      system ? systems.darwin,
+      profile,
+    }: let
+      host = import ./hosts/${profile}-mac.nix {
+        inherit inputs system;
+      };
+    in
+      host.darwinConfig;
+  in {
+    darwinConfigurations = {
+      "Adams-MacBook-Pro" = mkDarwinConfig {
+        hostName = "Adams-MacBook-Pro";
+        profile = "personal";
       };
 
-      nix.settings.experimental-features = "nix-command flakes";
-      programs.zsh.enable = true;
-      system.configurationRevision = self.rev or self.dirtyRev or null;
-      system.stateVersion = 5;
-      nixpkgs.hostPlatform = system;
-
-      fonts.packages = [];
-
-      # Security
-      security.pam.enableSudoTouchIdAuth = true;
-      system.defaults.SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true;
-
-      # Dock
-      system.defaults.dock.autohide = true;
-      system.defaults.dock.autohide-time-modifier = 0.4;
-      system.defaults.dock.show-recents = false;
-      system.defaults.dock.tilesize = 30;
-
-      # Finder
-      system.defaults.NSGlobalDomain.AppleShowAllExtensions = true;
-      system.defaults.NSGlobalDomain.AppleShowAllFiles = true;
-      system.defaults.finder.FXDefaultSearchScope = "SCcf";
-      system.defaults.finder.FXRemoveOldTrashItems = true;
-      system.defaults.NSGlobalDomain.NSDocumentSaveNewDocumentsToCloud = false;
-
-      # Mission Control
-      system.defaults.WindowManager.EnableStandardClickToShowDesktop = false;
-      system.defaults.dock.mru-spaces = false;
-
-      # Trackpad
-      system.defaults.trackpad.Clicking = true;
-      system.defaults.NSGlobalDomain."com.apple.swipescrolldirection" = false;
-      system.defaults.NSGlobalDomain."com.apple.mouse.tapBehavior" = 1;
-
-      # Windows
-      system.defaults.WindowManager.EnableTiledWindowMargins = false;
+      "Work-MacBook-Pro" = mkDarwinConfig {
+        hostName = "Adams-Work-MacBook-Pro";
+        profile = "work";
+      };
     };
-  in {
-    darwinConfigurations."Adams-MacBook-Pro" = nix-darwin.lib.darwinSystem {
-      inherit system;
-      modules = [configuration];
-    };
+
+    nixosConfigurations = {};
   };
 }
