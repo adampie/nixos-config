@@ -42,6 +42,20 @@
       copy-on-select = clipboard
       window-save-state = always
     '';
+    file.".config/starship.toml".text = ''
+      "$schema" = 'https://starship.rs/config-schema.json'
+
+      add_newline = true
+
+      [character]
+      success_symbol = '[➜](bold green)'
+
+      [package]
+      disabled = true
+
+      [cmd_duration]
+      format = '[ $duration]($style)'
+    '';
   };
 
   programs = {
