@@ -42,9 +42,7 @@
       shell-integration = zsh
       copy-on-select = clipboard
       window-save-state = always
-      font = "JetBrainsMono Nerd Font"
-      scrollback-lines = 10000
-      url-launch = "open"
+      font-family = "JetBrainsMono Nerd Font"
     '';
     file.".config/starship.toml".text = ''
       "$schema" = 'https://starship.rs/config-schema.json'
