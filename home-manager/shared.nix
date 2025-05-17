@@ -10,6 +10,7 @@
     packages = with pkgs; [
       alejandra
       curl
+      ghorg
       git
       jq
       starship
@@ -85,6 +86,9 @@
       Host *
         IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
     '';
+
+    file."Code/.keep".text = "";
+    file."Screenshots/.keep".text = "";
   };
 
   programs = {
