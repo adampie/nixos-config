@@ -1,34 +1,86 @@
 {...}: {
-  # Security
   security.pam.enableSudoTouchIdAuth = true;
-  system.defaults.SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true;
 
-  # Dock
-  system.defaults.dock.autohide = true;
-  system.defaults.dock.autohide-time-modifier = 0.4;
-  system.defaults.dock.show-recents = false;
-  system.defaults.dock.tilesize = 30;
+  system = {
+    defaults = {
+      alf = {
+        globalstate = 1;
+      };
 
-  # Finder
-  system.defaults.NSGlobalDomain.AppleShowAllExtensions = true;
-  system.defaults.NSGlobalDomain.AppleShowAllFiles = true;
-  system.defaults.finder.FXDefaultSearchScope = "SCcf";
-  system.defaults.finder.FXRemoveOldTrashItems = true;
-  system.defaults.NSGlobalDomain.NSDocumentSaveNewDocumentsToCloud = false;
+      CustomUserPreferences = {
+        "com.apple.AdLib" = {
+          allowApplePersonalizedAdvertising = false;
+        };
+        "com.apple.AppleIntelligenceReport" = {
+          reportDuration = 0;
+        };
+        "com.apple.desktopservices" = {
+          DSDontWriteNetworkStores = true;
+          DSDontWriteUSBStores = true;
+        };
+      };
 
-  # Mission Control
-  system.defaults.WindowManager.EnableStandardClickToShowDesktop = false;
-  system.defaults.dock.mru-spaces = false;
+      dock = {
+        autohide = true;
+        autohide-time-modifier = 0.4;
+        mru-spaces = false;
+        show-recents = false;
+        tilesize = 30;
+        wvous-bl-corner = 1;
+        wvous-br-corner = 1;
+        wvous-tl-corner = 1;
+        wvous-tr-corner = 1;
+      };
 
-  # Trackpad
-  system.defaults.trackpad.Clicking = true;
-  system.defaults.NSGlobalDomain."com.apple.swipescrolldirection" = false;
-  system.defaults.NSGlobalDomain."com.apple.mouse.tapBehavior" = 1;
+      finder = {
+        AppleShowAllExtensions = true;
+        AppleShowAllFiles = true;
+        FXDefaultSearchScope = "SCcf"; # Current folder
+        FXEnableExtensionChangeWarning = false;
+        FXPreferredViewStyle = "Nlsv"; # List view
+        FXRemoveOldTrashItems = true;
+        NewWindowTarget = "Home";
+        QuitMenuItem = true;
+        ShowPathbar = true;
+      };
 
-  # Windows
-  system.defaults.WindowManager.EnableTiledWindowMargins = false;
+      menuExtraClock = {
+        ShowSeconds = true;
+      };
 
-  # System
-  system.stateVersion = 5;
-  fonts.packages = [];
+      NSGlobalDomain = {
+        AppleShowAllFiles = true;
+        NSAutomaticCapitalizationEnabled = false;
+        NSAutomaticDashSubstitutionEnabled = false;
+        NSAutomaticInlinePredictionEnabled = false;
+        NSAutomaticPeriodSubstitutionEnabled = false;
+        NSAutomaticQuoteSubstitutionEnabled = false;
+        NSAutomaticSpellingCorrectionEnabled = false;
+        NSDocumentSaveNewDocumentsToCloud = false;
+        NSNavPanelExpandedStateForSaveMode = true;
+        NSNavPanelExpandedStateForSaveMode2 = true;
+        "com.apple.mouse.tapBehavior" = 1;
+        "com.apple.swipescrolldirection" = false;
+      };
+
+      screensaver = {
+        askForPassword = true;
+        askForPasswordDelay = 0;
+      };
+
+      SoftwareUpdate = {
+        AutomaticallyInstallMacOSUpdates = true;
+      };
+
+      trackpad = {
+        Clicking = true;
+      };
+
+      WindowManager = {
+        EnableStandardClickToShowDesktop = false;
+        EnableTiledWindowMargins = false;
+      };
+    };
+    stateVersion = 5;
+  };
 }
