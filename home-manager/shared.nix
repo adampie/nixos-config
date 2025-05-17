@@ -66,6 +66,10 @@
         save = 1000000;
         path = "~/.zsh_history";
       };
+      enableCompletion = true;
+      syntaxHighlighting.enable = true;
+      autosuggestion.enable = true;
+      historySubstringSearch.enable = true;
     };
 
     starship = {
