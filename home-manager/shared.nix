@@ -36,6 +36,12 @@
       export HOMEBREW_NO_AUTO_UPDATE=1
       export HOMEBREW_NO_ENV_HINTS=1
     '';
+    file.".config/ghostty/config".text = ''
+      theme = Dracula+
+      shell-integration = zsh
+      copy-on-select = clipboard
+      window-save-state = always
+    '';
   };
 
   programs = {
