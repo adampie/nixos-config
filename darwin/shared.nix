@@ -2,7 +2,6 @@
   # Homebrew shared settings
   homebrew = {
     enable = true;
-    taps = [];
     brews = [];
     casks = [
       "1password"
@@ -26,16 +25,34 @@
       "Kagi for Safari" = 1622835804;
       "Wipr 2" = 1662217862;
     };
+    taps = [];
   };
 
   nix.settings = {
-    experimental-features = ["nix-command" "flakes"];
+    experimental-features = ["flakes" "nix-command"];
   };
 
-  # macOS shared settings
   security.pam.enableSudoTouchIdAuth = true;
+
   system = {
     defaults = {
+      NSGlobalDomain = {
+        "com.apple.mouse.tapBehavior" = 1;
+        "com.apple.swipescrolldirection" = false;
+        AppleShowAllFiles = true;
+        NSAutomaticCapitalizationEnabled = false;
+        NSAutomaticDashSubstitutionEnabled = false;
+        NSAutomaticInlinePredictionEnabled = false;
+        NSAutomaticPeriodSubstitutionEnabled = false;
+        NSAutomaticQuoteSubstitutionEnabled = false;
+        NSAutomaticSpellingCorrectionEnabled = false;
+        NSDocumentSaveNewDocumentsToCloud = false;
+        NSNavPanelExpandedStateForSaveMode = true;
+        NSNavPanelExpandedStateForSaveMode2 = true;
+      };
+      SoftwareUpdate = {
+        AutomaticallyInstallMacOSUpdates = true;
+      };
       alf = {
         globalstate = 1;
       };
@@ -76,26 +93,9 @@
       menuExtraClock = {
         ShowSeconds = true;
       };
-      NSGlobalDomain = {
-        AppleShowAllFiles = true;
-        NSAutomaticCapitalizationEnabled = false;
-        NSAutomaticDashSubstitutionEnabled = false;
-        NSAutomaticInlinePredictionEnabled = false;
-        NSAutomaticPeriodSubstitutionEnabled = false;
-        NSAutomaticQuoteSubstitutionEnabled = false;
-        NSAutomaticSpellingCorrectionEnabled = false;
-        NSDocumentSaveNewDocumentsToCloud = false;
-        NSNavPanelExpandedStateForSaveMode = true;
-        NSNavPanelExpandedStateForSaveMode2 = true;
-        "com.apple.mouse.tapBehavior" = 1;
-        "com.apple.swipescrolldirection" = false;
-      };
       screensaver = {
         askForPassword = true;
         askForPasswordDelay = 0;
-      };
-      SoftwareUpdate = {
-        AutomaticallyInstallMacOSUpdates = true;
       };
       trackpad = {
         Clicking = true;

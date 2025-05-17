@@ -67,7 +67,7 @@
       chmod 600 "$HOME/.gnupg"/*
     '';
 
-    activation.ensureKnownHosts = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    activation.ensureKnownHosts = lib.hm.dag.entryAfter ["writeBoundary"] ''
       KNOWN_HOSTS="$HOME/.ssh/known_hosts"
       mkdir -p "$(dirname "$KNOWN_HOSTS")"
       touch "$KNOWN_HOSTS"
@@ -93,7 +93,6 @@
       history = {
         size = 1000000;
         save = 1000000;
-        path = "~/.zsh_history";
       };
       enableCompletion = true;
       syntaxHighlighting.enable = true;
