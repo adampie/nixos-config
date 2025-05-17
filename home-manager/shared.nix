@@ -9,13 +9,19 @@
     homeDirectory = lib.mkForce "/Users/adampie";
     packages = with pkgs; [
       alejandra
+      cosign
       curl
       ghorg
       git
+      gnupg
       jq
+      mise
+      ripgrep
       starship
+      tldr
       unstable.claude-code
       unstable.nerd-fonts.jetbrains-mono
+      watch
       wget
       yq
     ];
