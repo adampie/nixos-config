@@ -58,6 +58,14 @@
       [cmd_duration]
       format = '[ $duration]($style)'
     '';
+
+    activation.gnupgPermissions = lib.mkIf pkgs.stdenv.isDarwin ''
+      mkdir -p "$HOME/.gnupg"
+      ${pkgs.gnupg}/bin/gpg --list-keys || true
+      chown -R "$USER:$(id -gn)" "$HOME/.gnupg"
+      chmod 700 "$HOME/.gnupg"
+      chmod 600 "$HOME/.gnupg"/*
+    '';
   };
 
   programs = {
