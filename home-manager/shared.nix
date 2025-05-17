@@ -108,6 +108,11 @@
       userName = "Adam Pietrzycki";
     };
 
+    mise = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+
     starship = {
       enable = true;
       enableZshIntegration = true;
