@@ -28,6 +28,10 @@
     };
   };
 
+  nix.settings = {
+    experimental-features = ["nix-command" "flakes"];
+  };
+
   # macOS shared settings
   security.pam.enableSudoTouchIdAuth = true;
   system = {
