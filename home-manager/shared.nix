@@ -59,7 +59,14 @@
   };
 
   programs = {
-    zsh.enable = true;
+    zsh = {
+      enable = true;
+      history = {
+        size = 1000000;
+        save = 1000000;
+        path = "~/.zsh_history";
+      };
+    };
 
     starship = {
       enable = true;
