@@ -5,7 +5,7 @@
 }: {
   imports = [
     ./shared.nix
-    ./files/personal.nix
+    ./dotfiles/personal.nix
     ./packages/personal.nix
     ./programs/personal.nix
   ];

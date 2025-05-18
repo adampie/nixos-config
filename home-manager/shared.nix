@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    ./files/shared.nix
+    ./dotfiles/shared.nix
     ./packages/shared.nix
     ./programs/shared.nix
   ];

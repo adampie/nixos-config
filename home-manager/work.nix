@@ -5,7 +5,7 @@
 }: {
   imports = [
     ./shared.nix
-    ./files/work.nix
+    ./dotfiles/work.nix
     ./packages/work.nix
     ./programs/work.nix
   ];
