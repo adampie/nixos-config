@@ -47,4 +47,37 @@
     NO_TELEMETRY = "1";
     DO_NOT_TRACK = "1";
   };
+
+  home.file.".local/bin/.keep".text = "";
+  home.file.".local/bin/idea" = {
+    text = ''
+      #!/bin/sh
+      open -na "IntelliJ IDEA.app" --args "$@"
+    '';
+    executable = true;
+  };
+  home.file.".local/bin/pycharm" = {
+    text = ''
+      #!/bin/sh
+      open -na "PyCharm.app" --args "$@"
+    '';
+    executable = true;
+  };
+  home.file.".local/bin/goland" = {
+    text = ''
+      #!/bin/sh
+      open -na "GoLand.app" --args "$@"
+    '';
+    executable = true;
+  };
+  home.file.".local/bin/datagrip" = {
+    text = ''
+      #!/bin/sh
+      open -na "DataGrip.app" --args "$@"
+    '';
+    executable = true;
+  };
+  home.sessionPath = [
+    "$HOME/.local/bin"
+  ];
 }
