@@ -59,6 +59,7 @@
       copy-on-select = clipboard
       window-save-state = always
       font-family = "JetBrainsMono Nerd Font"
+      working-directory = home
     '';
 
     file.".config/starship.toml".text = ''
