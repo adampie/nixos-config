@@ -25,11 +25,11 @@
     ...
   }: {
     darwinConfigurations = {
-      "Adams-MacBook-Pro" = import ./hosts/adams-macbook-pro.nix {
+      "Adams-MacBook-Pro" = import ./hosts/macbook {
         inherit inputs;
         system = "aarch64-darwin";
       };
-      "Adams-Work-MacBook-Pro" = import ./hosts/adams-work-macbook-pro.nix {
+      "Adams-Work-MacBook-Pro" = import ./hosts/macbook-work {
         inherit inputs;
         system = "aarch64-darwin";
       };

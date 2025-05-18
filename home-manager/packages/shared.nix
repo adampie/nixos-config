@@ -11,11 +11,12 @@
     ripgrep
     starship
     tldr
-    unstable.codex
-    unstable.claude-code
-    unstable.nerd-fonts.jetbrains-mono
     watch
     wget
     yq
+
+    unstable.codex
+    unstable.claude-code
+    unstable.nerd-fonts.jetbrains-mono
   ];
 }
