@@ -1,15 +1,21 @@
-{ inputs, system, ... }:
-let
-  shared = import ../shared.nix { inherit inputs system; };
+{
+  inputs,
+  system,
+  ...
+}: let
+  shared = import ../shared.nix {inherit inputs system;};
 in
-  inputs.nix-darwin.lib.darwinSystem (shared.darwinSystemConfig // {
-    modules = [
-      ../../darwin/work.nix
-      inputs.home-manager.darwinModules.home-manager
-      {
-        home-manager = shared.homeManagerConfig // {
-          users.adampie = import ../../home-manager/work.nix;
-        };
-      }
-    ];
-  })
+  inputs.nix-darwin.lib.darwinSystem (shared.darwinSystemConfig
+    // {
+      modules = [
+        ../../darwin/work.nix
+        inputs.home-manager.darwinModules.home-manager
+        {
+          home-manager =
+            shared.homeManagerConfig
+            // {
+              users.adampie = import ../../home-manager/work.nix;
+            };
+        }
+      ];
+    })
