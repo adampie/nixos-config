@@ -1,7 +1,7 @@
 {...}: {
-  imports = [./shared.nix];
-
-  homebrew.casks = [];
-
-  homebrew.masApps = {};
+  imports = [
+    ./shared.nix
+    ./system/work.nix
+    ./homebrew/work.nix
+  ];
 }

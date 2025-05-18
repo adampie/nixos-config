@@ -1,0 +1,3 @@
+{...}: {
+  # Work-specific system settings
+}

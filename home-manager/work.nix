@@ -5,11 +5,8 @@
 }: {
   imports = [
     ./shared.nix
+    ./files/work.nix
+    ./packages/work.nix
+    ./programs/work.nix
   ];
-
-  home.packages = with pkgs; [
-    dive
-  ];
-
-  programs = {};
 }

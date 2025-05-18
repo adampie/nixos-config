@@ -1,14 +1,7 @@
 {...}: {
-  imports = [./shared.nix];
-
-  homebrew.casks = [
-    "daisydisk"
-    "little-snitch"
-    "lm-studio"
-    "micro-snitch"
+  imports = [
+    ./shared.nix
+    ./system/personal.nix
+    ./homebrew/personal.nix
   ];
-
-  homebrew.masApps = {
-    "Flighty" = 1358823008;
-  };
 }

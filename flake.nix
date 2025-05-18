@@ -25,19 +25,25 @@
     ...
   }: {
     darwinConfigurations = {
-      "Adams-MacBook-Pro" = import ./hosts/personal-mac.nix {
+      "Adams-MacBook-Pro" = import ./hosts/macos.nix {
         inherit inputs;
         system = "aarch64-darwin";
+        profile = "personal";
       };
-      "Adams-Work-MacBook-Pro" = import ./hosts/work-mac.nix {
+      "Adams-Work-MacBook-Pro" = import ./hosts/macos.nix {
         inherit inputs;
         system = "aarch64-darwin";
+        profile = "work";
       };
     };
 
     homeConfigurations = {
-      "adampie@personal" = import ./home-manager/personal.nix;
-      "adampie@work" = import ./home-manager/work.nix;
+      "adampie@personal" = import ./home-manager/profile.nix {
+        profile = "personal";
+      };
+      "adampie@work" = import ./home-manager/profile.nix {
+        profile = "work";
+      };
     };
 
     nixosConfigurations = {};
