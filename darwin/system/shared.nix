@@ -1,13 +1,10 @@
 {...}: {
-  # Nix settings
   nix.settings = {
     experimental-features = ["flakes" "nix-command"];
   };
 
-  # Enable Touch ID for sudo
   security.pam.enableSudoTouchIdAuth = true;
 
-  # macOS system defaults and activation scripts
   system = {
     defaults = {
       NSGlobalDomain = {
@@ -24,9 +21,11 @@
         NSNavPanelExpandedStateForSaveMode = true;
         NSNavPanelExpandedStateForSaveMode2 = true;
       };
+
       SoftwareUpdate = {
         AutomaticallyInstallMacOSUpdates = true;
       };
+
       CustomUserPreferences = {
         "com.apple.AdLib" = {allowApplePersonalizedAdvertising = false;};
         "com.apple.AppleIntelligenceReport" = {reportDuration = 0;};
@@ -35,6 +34,7 @@
           DSDontWriteUSBStores = true;
         };
       };
+
       dock = {
         autohide = true;
         autohide-time-modifier = 0.4;
@@ -46,6 +46,7 @@
         wvous-tl-corner = 1;
         wvous-tr-corner = 1;
       };
+
       finder = {
         AppleShowAllExtensions = true;
         AppleShowAllFiles = true;
@@ -57,23 +58,29 @@
         QuitMenuItem = true;
         ShowPathbar = true;
       };
+
       menuExtraClock = {ShowSeconds = true;};
+
       screensaver = {
         askForPassword = true;
         askForPasswordDelay = 0;
       };
+
       trackpad = {Clicking = true;};
+
       WindowManager = {
         EnableStandardClickToShowDesktop = false;
         EnableTiledWindowMargins = false;
       };
     };
+
     activationScripts.postUserActivation.text = ''
       sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on
       sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setallowsigned on
       sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setallowsignedapp on
       sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setstealthmode on
     '';
+
     stateVersion = 5;
   };
 }

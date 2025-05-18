@@ -18,14 +18,12 @@
 in {
   inherit pkgs;
 
-  # Home Manager common setup
   homeManagerConfig = {
     extraSpecialArgs = {inherit inputs;};
     useGlobalPkgs = true;
     useUserPackages = true;
   };
 
-  # Common darwin system configuration
   darwinSystemConfig = {
     inherit system;
     specialArgs = {inherit inputs pkgs;};

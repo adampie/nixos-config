@@ -1,3 +1,1 @@
-{...}: {
-  # Personal-specific system settings
-}
+{...}: {}
