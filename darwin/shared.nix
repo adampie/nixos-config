@@ -53,9 +53,6 @@
       SoftwareUpdate = {
         AutomaticallyInstallMacOSUpdates = true;
       };
-      alf = {
-        globalstate = 1;
-      };
       CustomUserPreferences = {
         "com.apple.AdLib" = {
           allowApplePersonalizedAdvertising = false;
@@ -105,6 +102,12 @@
         EnableTiledWindowMargins = false;
       };
     };
+    activationScripts.postUserActivation.text = ''
+      sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on
+      sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setallowsigned on
+      sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setallowsignedapp on
+      sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setstealthmode on
+    '';
     stateVersion = 5;
   };
 }

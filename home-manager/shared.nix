@@ -96,6 +96,11 @@
 
     file."Code/.keep".text = "";
     file."Screenshots/.keep".text = "";
+
+    sessionVariables = {
+      NO_TELEMETRY = "1";
+      DO_NOT_TRACK = "1";
+    };
   };
 
   programs = {
