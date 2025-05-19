@@ -6,6 +6,7 @@
       "little-snitch"
       "lm-studio"
       "micro-snitch"
+      "rustrover"
     ];
     masApps = {
       "Flighty" = 1358823008;
