@@ -77,6 +77,31 @@
     '';
     executable = true;
   };
+  
+  home.file.".local/bin/nixus" = {
+    text = ''
+      #!/usr/bin/env zsh
+      set -e
+      nix flake update && \
+      darwin-rebuild build --flake .# && \
+      diff_output=$(nix store diff-closures /run/current-system ./result)
+      if [[ -z "$diff_output" || "$diff_output" == *"no changes"* ]]; then
+        echo "No changes detected. Cleaning up."
+        rm -rf ./result
+        exit 0
+      else
+        echo "$diff_output"
+        echo -n "Continue with switch? (y/n): "
+        read ans
+        if [[ "$ans" == "y" || "$ans" == "Y" ]]; then
+          darwin-rebuild switch --flake .#
+        fi
+        rm -rf ./result
+      fi
+    '';
+    executable = true;
+  };
+  
   home.sessionPath = [
     "$HOME/.local/bin"
   ];
