@@ -4,6 +4,7 @@
     awscli
     cosign
     curl
+    gh
     ghorg
     git
     gnupg

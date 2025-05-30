@@ -77,7 +77,7 @@
     '';
     executable = true;
   };
-  
+
   home.file.".local/bin/nixus" = {
     text = ''
       #!/usr/bin/env zsh
@@ -101,7 +101,7 @@
     '';
     executable = true;
   };
-  
+
   home.sessionPath = [
     "$HOME/.local/bin"
   ];

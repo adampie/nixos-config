@@ -59,6 +59,11 @@
         ShowPathbar = true;
       };
 
+      loginwindow = {
+        GuestEnabled = false;
+        SHOWFULLNAME = true;
+      };
+
       menuExtraClock = {ShowSeconds = true;};
 
       screensaver = {
@@ -73,13 +78,6 @@
         EnableTiledWindowMargins = false;
       };
     };
-
-    activationScripts.postUserActivation.text = ''
-      sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on
-      sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setallowsigned on
-      sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setallowsignedapp on
-      sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setstealthmode on
-    '';
 
     stateVersion = 5;
   };
