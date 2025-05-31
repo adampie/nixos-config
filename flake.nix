@@ -3,6 +3,7 @@
 
   inputs = {
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
+    flake-schemas.url = "https://flakehub.com/f/DeterminateSystems/flake-schemas/*";
     fh.url = "https://flakehub.com/f/DeterminateSystems/fh/*.tar.gz";
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
@@ -21,12 +22,15 @@
 
   outputs = inputs @ {
     self,
+    flake-schemas,
     nixpkgs,
     nix-darwin,
     home-manager,
     nixpkgs-unstable,
     ...
   }: {
+    schemas = flake-schemas.schemas;
+
     darwinConfigurations = {
       "Adams-MacBook-Pro" = import ./hosts/macbook {
         inherit inputs;
