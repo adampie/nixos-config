@@ -14,7 +14,7 @@ in
           home-manager =
             shared.homeManagerConfig
             // {
-              users.adampie = { pkgs, lib, ... }: import ../../home-manager/personal.nix { inherit pkgs lib; };
+              users.adampie = import ../../home-manager/personal.nix;
             };
         }
       ];
